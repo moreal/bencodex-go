@@ -3,7 +3,7 @@ package benchmarks
 import (
 	"testing"
 
-	bencode "github.com/IncSW/go-bencode"
+	bencode "github.com/moreal/bencodex-go"
 	"github.com/stretchr/testify/assert"
 )
 

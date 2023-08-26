@@ -3,7 +3,7 @@ package decoder
 import (
 	"errors"
 
-	"github.com/IncSW/go-bencode/internal"
+	"github.com/moreal/bencodex-go/internal"
 )
 
 type Decoder struct {

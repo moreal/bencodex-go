@@ -1,4 +1,4 @@
-module github.com/IncSW/go-bencode
+module github.com/moreal/bencodex-go
 
 go 1.15
 

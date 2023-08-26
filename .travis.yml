@@ -6,7 +6,7 @@ go:
     - 1.16
 env:
   - GO111MODULE=on
-go_import_path: github.com/IncSW/go-bencode
+go_import_path: github.com/moreal/bencodex-go
 script:
     - make test
     - make bench

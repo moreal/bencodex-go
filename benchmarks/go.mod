@@ -1,9 +1,9 @@
-module github.com/IncSW/go-bencode/benchmarks
+module github.com/moreal/bencodex-go/benchmarks
 
 go 1.16
 
 require (
-	github.com/IncSW/go-bencode v0.2.0 // indirect
+	github.com/moreal/bencodex-go v0.2.0 // indirect
 	github.com/aleksatr/go-bencode v0.0.0-20200413201258-b899a06787b7
 	github.com/anacrolix/torrent v1.29.2
 	github.com/chihaya/chihaya v1.0.1-0.20210702171632-c1f523e855f5

@@ -4,7 +4,7 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/IncSW/go-bencode/internal"
+	"github.com/moreal/bencodex-go/internal"
 )
 
 const stringsArrayLen = 20

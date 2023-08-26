@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/IncSW/go-bencode/internal"
+	"github.com/moreal/bencodex-go/internal"
 )
 
 //go:linkname memmove runtime.memmove

@@ -3,8 +3,6 @@ package bencode_test
 import (
 	"fmt"
 	"testing"
-
-	"github.com/IncSW/go-bencode"
 )
 
 func TestExample(t *testing.T) {

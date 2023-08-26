@@ -25,8 +25,8 @@ dmitri.shuralyov.com/state v0.0.0-20180228185332-28bcc343414c/go.mod h1:0PRwlb0D
 git.apache.org/thrift.git v0.0.0-20180902110319-2566ecd5d999/go.mod h1:fPE2ZNJGynbRyZ4dJvy6G277gSllfV2HJqblrnkyeyg=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
-github.com/IncSW/go-bencode v0.2.0 h1:uvvQek0ENitz3KT9kJcAWaFLn+SMIo+cYR4C+cO8RcI=
-github.com/IncSW/go-bencode v0.2.0/go.mod h1:WPQp/z0JCQPy8cXJCRi/x7F7n/U0o9CIdBCpfkHGQY0=
+github.com/moreal/bencodex-go v0.2.0 h1:uvvQek0ENitz3KT9kJcAWaFLn+SMIo+cYR4C+cO8RcI=
+github.com/moreal/bencodex-go v0.2.0/go.mod h1:WPQp/z0JCQPy8cXJCRi/x7F7n/U0o9CIdBCpfkHGQY0=
 github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible/go.mod h1:r7JcOSlj0wfOMncg0iLm8Leh48TZaKVeNIfJntJ2wa0=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
 github.com/RoaringBitmap/roaring v0.4.7/go.mod h1:8khRDP4HmeXns4xIj9oGrKSz7XTQiJx2zgh7AcNke4w=

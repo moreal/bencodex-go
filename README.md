@@ -2,15 +2,15 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Build Status](https://img.shields.io/travis/IncSW/go-bencode.svg?style=flat-square)](https://travis-ci.org/IncSW/go-bencode)
 [![Coverage Status](https://img.shields.io/coveralls/IncSW/go-bencode/master.svg?style=flat-square)](https://coveralls.io/github/IncSW/go-bencode)
-[![Go Report Card](https://goreportcard.com/badge/github.com/IncSW/go-bencode?style=flat-square)](https://goreportcard.com/report/github.com/IncSW/go-bencode)
-[![Go Doc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square)](http://godoc.org/github.com/IncSW/go-bencode)
+[![Go Report Card](https://goreportcard.com/badge/github.com/moreal/bencodex-go?style=flat-square)](https://goreportcard.com/report/github.com/moreal/bencodex-go)
+[![Go Doc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square)](http://godoc.org/github.com/moreal/bencodex-go)
 
 ## Installation
 
-`go get github.com/IncSW/go-bencode`
+`go get github.com/moreal/bencodex-go`
 
 ```go
-import bencode "github.com/IncSW/go-bencode"
+import bencode "github.com/moreal/bencodex-go"
 ```
 
 ## Quick Start
@@ -35,7 +35,7 @@ fmt.Println(string(data))
 data, err := bencode.Unmarshal(value)
 ```
 
-## Performance [benchmarks](https://github.com/IncSW/go-bencode/tree/master/benchmarks)
+## Performance [benchmarks](https://github.com/moreal/bencodex-go/tree/master/benchmarks)
 
 ### Go 1.16, Debian 9.1, i7-7700
 

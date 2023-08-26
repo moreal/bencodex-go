@@ -1,8 +1,8 @@
 package bencode
 
 import (
-	"github.com/IncSW/go-bencode/internal/decoder"
-	"github.com/IncSW/go-bencode/internal/encoder"
+	"github.com/moreal/bencodex-go/internal/decoder"
+	"github.com/moreal/bencodex-go/internal/encoder"
 )
 
 func MarshalTo(dst []byte, data interface{}) ([]byte, error) {
