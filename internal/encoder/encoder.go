@@ -105,12 +105,14 @@ func (e *Encoder) encode(data interface{}) error {
 	case uint:
 		e.encodeInt(int64(value))
 	case []byte:
-		e.encodeBytes(value)
+		e.encodeBytesLike(internal.NewBytes(value))
 	case string:
-		e.encodeBytes(internal.S2B(value))
+		e.encodeBytesLike(internal.NewString(value))
+	case internal.BencodexBytesLike:
+		e.encodeBytesLike(value)
 	case []interface{}:
 		return e.encodeList(value)
-	case map[string]interface{}:
+	case map[internal.BencodexBytesLike]interface{}:
 		return e.encodeDictionary(value)
 	default:
 		return fmt.Errorf("bencode: unsupported type: %T", value)

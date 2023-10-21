@@ -1,9 +1,12 @@
 package bencode
 
 import (
+	"github.com/moreal/bencodex-go/internal"
 	"github.com/moreal/bencodex-go/internal/decoder"
 	"github.com/moreal/bencodex-go/internal/encoder"
 )
+
+type BencodexDictionary map[internal.BencodexBytesLike]interface{}
 
 func MarshalTo(dst []byte, data interface{}) ([]byte, error) {
 	var e encoder.Encoder

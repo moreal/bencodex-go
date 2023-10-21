@@ -2,8 +2,7 @@ package decoder
 
 import (
 	"errors"
-
-	"github.com/moreal/bencodex-go/internal"
+	bencodex "github.com/moreal/bencodex-go/internal"
 )
 
 type Decoder struct {
@@ -22,6 +21,15 @@ func (d *Decoder) decode() (interface{}, error) {
 	switch d.data[d.cursor] {
 	case 'i':
 		return d.decodeInt()
+	case 'n':
+		d.cursor += 1
+		return nil, nil
+	case 't':
+		d.cursor += 1
+		return true, nil
+	case 'f':
+		d.cursor += 1
+		return false, nil
 	case 'l':
 		d.cursor += 1
 		list := []interface{}{}
@@ -41,7 +49,7 @@ func (d *Decoder) decode() (interface{}, error) {
 		}
 	case 'd':
 		d.cursor += 1
-		dictionary := map[string]interface{}{}
+		dictionary := map[bencodex.BencodexBytesLike]interface{}{}
 		for {
 			if d.cursor == d.length {
 				return nil, errors.New("bencode: invalid dictionary field")
@@ -50,7 +58,19 @@ func (d *Decoder) decode() (interface{}, error) {
 				d.cursor += 1
 				return dictionary, nil
 			}
-			key, err := d.decodeBytes()
+			var (
+				key bencodex.BencodexBytesLike
+				err error
+			)
+			if '0' <= d.data[d.cursor] && d.data[d.cursor] <= '9' {
+				key, err = d.decodeBytes(false)
+			}
+
+			if d.data[d.cursor] == 'u' {
+				d.cursor += 1
+				key, err = d.decodeBytes(true)
+			}
+
 			if err != nil {
 				return nil, errors.New("bencode: non-string dictionary key")
 			}
@@ -58,9 +78,17 @@ func (d *Decoder) decode() (interface{}, error) {
 			if err != nil {
 				return nil, err
 			}
-			dictionary[internal.B2S(key)] = value
+			dictionary[key] = value
 		}
+	case 'u':
+		d.cursor += 1
+		unicode, err := d.decodeBytes(true)
+		if err != nil {
+			return nil, err
+		}
+
+		return unicode, nil
 	default:
-		return d.decodeBytes()
+		return d.decodeBytes(false)
 	}
 }
