@@ -12,7 +12,7 @@ func Benchmark_Tumdum_Marshal(b *testing.B) {
 	b.ReportAllocs()
 	var err error
 	for n := 0; n < b.N; n++ {
-		buffer, err = bencode.Marshal(bytesInt64TestData)
+		buffer, err = bencodex.Marshal(bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -27,7 +27,7 @@ func Benchmark_Tumdum_MarshalTo(b *testing.B) {
 	b.ResetTimer()
 	for n := 0; n < b.N; n++ {
 		bytesBuffer.Reset()
-		err = bencode.NewEncoder(bytesBuffer).Encode(bytesInt64TestData)
+		err = bencodex.NewEncoder(bytesBuffer).Encode(bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -42,7 +42,7 @@ func Benchmark_Tumdum_Unmarshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
 		tumdumTorrent = map[string]interface{}{}
-		err = bencode.Unmarshal(unmarshalTestData, &tumdumTorrent)
+		err = bencodex.Unmarshal(unmarshalTestData, &tumdumTorrent)
 		if err != nil {
 			b.Fatal(err)
 		}

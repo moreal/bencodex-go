@@ -10,7 +10,7 @@ import (
 func Benchmark_Aleksatr_Marshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		buffer, err = bencode.Encode(bytesInt64TestData)
+		buffer, err = bencodex.Encode(bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -22,7 +22,7 @@ func Benchmark_Aleksatr_Marshal(b *testing.B) {
 func Benchmark_Aleksatr_Unmarshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		torrent, err = bencode.Decode(unmarshalTestData)
+		torrent, err = bencodex.Decode(unmarshalTestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -35,7 +35,7 @@ func Benchmark_Aleksatr_RealWorld(b *testing.B) {
 	b.ReportAllocs()
 	b.Run("Unmarshal", func(b *testing.B) {
 		for n := 0; n < b.N; n++ {
-			torrent, err = bencode.Decode(realWorldData)
+			torrent, err = bencodex.Decode(realWorldData)
 			if err != nil {
 				b.Fatal(err)
 			}
@@ -44,7 +44,7 @@ func Benchmark_Aleksatr_RealWorld(b *testing.B) {
 	})
 	b.Run("Marshal", func(b *testing.B) {
 		for n := 0; n < b.N; n++ {
-			buffer, err = bencode.Encode(torrent)
+			buffer, err = bencodex.Encode(torrent)
 			if err != nil {
 				b.Fatal(err)
 			}

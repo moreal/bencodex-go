@@ -12,7 +12,7 @@ func Benchmark_Lwch_Marshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
 		bytesBuffer = bytes.NewBuffer(nil)
-		err = bencode.NewEncoder(bytesBuffer).Encode(stringInt64TestData)
+		err = bencodex.NewEncoder(bytesBuffer).Encode(stringInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -29,7 +29,7 @@ func Benchmark_Lwch_MarshalTo(b *testing.B) {
 	b.ResetTimer()
 	for n := 0; n < b.N; n++ {
 		bytesBuffer.Reset()
-		err = bencode.NewEncoder(bytesBuffer).Encode(stringInt64TestData)
+		err = bencodex.NewEncoder(bytesBuffer).Encode(stringInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -46,7 +46,7 @@ func Benchmark_Lwch_Unmarshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
 		torrent = nil
-		err = bencode.Decode(unmarshalTestData, &torrent)
+		err = bencodex.Decode(unmarshalTestData, &torrent)
 		if err != nil {
 			b.Fatal(err)
 		}

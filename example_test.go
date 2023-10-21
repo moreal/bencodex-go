@@ -11,7 +11,7 @@ func TestExample(t *testing.T) {
 		"string": "Hello, World",
 		"list":   []interface{}{"foo", "bar"},
 	}
-	data, err := bencode.Marshal(dict)
+	data, err := bencodex.Marshal(dict)
 	if err != nil {
 		panic(err)
 	}

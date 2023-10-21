@@ -9,7 +9,7 @@ import (
 func Benchmark_Stints_Marshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		buffer = bencode.NewEncoder().Encode(stringInt64TestData)
+		buffer = bencodex.NewEncoder().Encode(stringInt64TestData)
 		if buffer == nil {
 			b.Fatal("is nil")
 		}

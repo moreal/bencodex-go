@@ -12,7 +12,7 @@ func Benchmark_Jackpal_Marshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
 		bytesBuffer = bytes.NewBuffer(nil)
-		err = bencode.Marshal(bytesBuffer, bytesInt64TestData)
+		err = bencodex.Marshal(bytesBuffer, bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -27,7 +27,7 @@ func Benchmark_Jackpal_MarshalTo(b *testing.B) {
 	b.ResetTimer()
 	for n := 0; n < b.N; n++ {
 		bytesBuffer.Reset()
-		err = bencode.Marshal(bytesBuffer, bytesInt64TestData)
+		err = bencodex.Marshal(bytesBuffer, bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -39,7 +39,7 @@ func Benchmark_Jackpal_MarshalTo(b *testing.B) {
 func Benchmark_Jackpal_Unmarshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		torrent, err = bencode.Decode(bytes.NewReader(unmarshalTestData))
+		torrent, err = bencodex.Decode(bytes.NewReader(unmarshalTestData))
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -53,7 +53,7 @@ func Benchmark_Jackpal_RealWorld(b *testing.B) {
 	b.Run("Unmarshal", func(b *testing.B) {
 		for n := 0; n < b.N; n++ {
 			bytesBuffer = bytes.NewBuffer(nil)
-			torrent, err = bencode.Decode(bytes.NewReader(realWorldData))
+			torrent, err = bencodex.Decode(bytes.NewReader(realWorldData))
 			if err != nil {
 				b.Fatal(err)
 			}
@@ -62,7 +62,7 @@ func Benchmark_Jackpal_RealWorld(b *testing.B) {
 	b.Run("Marshal", func(b *testing.B) {
 		for n := 0; n < b.N; n++ {
 			bytesBuffer = bytes.NewBuffer(nil)
-			err = bencode.Marshal(bytesBuffer, torrent)
+			err = bencodex.Marshal(bytesBuffer, torrent)
 			if err != nil {
 				b.Fatal(err)
 			}
@@ -72,7 +72,7 @@ func Benchmark_Jackpal_RealWorld(b *testing.B) {
 	b.Run("MarshalTo", func(b *testing.B) {
 		for n := 0; n < b.N; n++ {
 			bytesBuffer.Reset()
-			err = bencode.Marshal(bytesBuffer, torrent)
+			err = bencodex.Marshal(bytesBuffer, torrent)
 			if err != nil {
 				b.Fatal(err)
 			}

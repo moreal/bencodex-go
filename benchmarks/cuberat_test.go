@@ -12,7 +12,7 @@ func Benchmark_Cuberat_Marshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
 		bytesBuffer = bytes.NewBuffer(nil)
-		err = bencode.Encode(bytesBuffer, stringInt64TestData)
+		err = bencodex.Encode(bytesBuffer, stringInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -28,7 +28,7 @@ func Benchmark_Cuberat_MarshalTo(b *testing.B) {
 	b.ResetTimer()
 	for n := 0; n < b.N; n++ {
 		bytesBuffer.Reset()
-		err = bencode.NewEncoder(bytesBuffer).Encode(stringInt64TestData)
+		err = bencodex.NewEncoder(bytesBuffer).Encode(stringInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -41,7 +41,7 @@ func Benchmark_Cuberat_MarshalTo(b *testing.B) {
 func Benchmark_Cuberat_Unmarshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		torrent, err = bencode.NewDecoder(bytes.NewReader(unmarshalTestData)).Decode()
+		torrent, err = bencodex.NewDecoder(bytes.NewReader(unmarshalTestData)).Decode()
 		if err != nil {
 			b.Fatal(err)
 		}

@@ -4,14 +4,13 @@ import (
 	"bytes"
 	"testing"
 
-	bencode "github.com/ehmry/go-bencode"
 	"github.com/stretchr/testify/assert"
 )
 
 func Benchmark_Ehmry_Marshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		buffer, err = bencode.Marshal(bytesInt64TestData)
+		buffer, err = bencodex.Marshal(bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -26,7 +25,7 @@ func Benchmark_Ehmry_MarshalTo(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
 		bytesBuffer.Reset()
-		err = bencode.NewEncoder(bytesBuffer).Encode(bytesInt64TestData)
+		err = bencodex.NewEncoder(bytesBuffer).Encode(bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -41,7 +40,7 @@ func Benchmark_Ehmry_Unmarshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
 		ehmryTorrent = nil
-		err = bencode.Unmarshal(unmarshalTestData, &ehmryTorrent)
+		err = bencodex.Unmarshal(unmarshalTestData, &ehmryTorrent)
 		if err != nil {
 			b.Fatal(err)
 		}

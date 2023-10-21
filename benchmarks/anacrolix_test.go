@@ -11,7 +11,7 @@ import (
 func Benchmark_Anacrolix_Marshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		buffer, err = bencode.Marshal(bytesInt64TestData)
+		buffer, err = bencodex.Marshal(bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -26,7 +26,7 @@ func Benchmark_Anacrolix_MarshalTo(b *testing.B) {
 	b.ResetTimer()
 	for n := 0; n < b.N; n++ {
 		bytesBuffer.Reset()
-		err = bencode.NewEncoder(bytesBuffer).Encode(bytesInt64TestData)
+		err = bencodex.NewEncoder(bytesBuffer).Encode(bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -39,7 +39,7 @@ func Benchmark_Anacrolix_Unmarshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
 		torrent = nil
-		err = bencode.Unmarshal(unmarshalTestData, &torrent)
+		err = bencodex.Unmarshal(unmarshalTestData, &torrent)
 		if err != nil {
 			b.Fatal(err)
 		}

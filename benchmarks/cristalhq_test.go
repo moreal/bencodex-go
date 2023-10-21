@@ -10,7 +10,7 @@ import (
 func Benchmark_Cristalhq_Marshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		buffer, err = bencode.Marshal(bytesInt64TestData)
+		buffer, err = bencodex.Marshal(bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -24,7 +24,7 @@ func Benchmark_Cristalhq_MarshalTo(b *testing.B) {
 	buffer = make([]byte, 0, 512)
 	b.ResetTimer()
 	for n := 0; n < b.N; n++ {
-		buffer, err = bencode.MarshalTo(buffer[:0], bytesInt64TestData)
+		buffer, err = bencodex.MarshalTo(buffer[:0], bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -37,7 +37,7 @@ func Benchmark_Cristalhq_Unmarshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
 		torrent = nil
-		err = bencode.Unmarshal(unmarshalTestData, &torrent)
+		err = bencodex.Unmarshal(unmarshalTestData, &torrent)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -51,7 +51,7 @@ func Benchmark_Cristalhq_RealWorld(b *testing.B) {
 	b.Run("Unmarshal", func(b *testing.B) {
 		for n := 0; n < b.N; n++ {
 			torrent = nil
-			err = bencode.Unmarshal(realWorldData, &torrent)
+			err = bencodex.Unmarshal(realWorldData, &torrent)
 			if err != nil {
 				b.Fatal(err)
 			}
@@ -60,7 +60,7 @@ func Benchmark_Cristalhq_RealWorld(b *testing.B) {
 	})
 	b.Run("Marshal", func(b *testing.B) {
 		for n := 0; n < b.N; n++ {
-			buffer, err = bencode.Marshal(torrent)
+			buffer, err = bencodex.Marshal(torrent)
 			if err != nil {
 				b.Fatal(err)
 			}
@@ -68,7 +68,7 @@ func Benchmark_Cristalhq_RealWorld(b *testing.B) {
 	})
 	b.Run("MarshalTo", func(b *testing.B) {
 		for n := 0; n < b.N; n++ {
-			buffer, err = bencode.MarshalTo(buffer[:0], torrent)
+			buffer, err = bencodex.MarshalTo(buffer[:0], torrent)
 			if err != nil {
 				b.Fatal(err)
 			}

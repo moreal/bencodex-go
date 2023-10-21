@@ -1,6 +1,6 @@
 # go-bencode
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/IncSW/go-bencode.svg?style=flat-square)](https://travis-ci.org/IncSW/go-bencode)
+[![Build Status](https://img.shields.io/travis/IncSW/go-bencodex.svg?style=flat-square)](https://travis-ci.org/IncSW/go-bencode)
 [![Coverage Status](https://img.shields.io/coveralls/IncSW/go-bencode/master.svg?style=flat-square)](https://coveralls.io/github/IncSW/go-bencode)
 [![Go Report Card](https://goreportcard.com/badge/github.com/moreal/bencodex-go?style=flat-square)](https://goreportcard.com/report/github.com/moreal/bencodex-go)
 [![Go Doc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square)](http://godoc.org/github.com/moreal/bencodex-go)
@@ -21,7 +21,7 @@ var dict interface{} = map[string]interface{}{
 	"string": "Hello, World",
 	"list":   []interface{}{"foo", "bar"},
 }
-data, err := bencode.Marshal(dict)
+data, err := bencodex.Marshal(dict)
 if err != nil {
 	panic(err)
 }
@@ -32,7 +32,7 @@ fmt.Println(string(data))
 ```
 
 ```go
-data, err := bencode.Unmarshal(value)
+data, err := bencodex.Unmarshal(value)
 ```
 
 ## Performance [benchmarks](https://github.com/moreal/bencodex-go/tree/master/benchmarks)

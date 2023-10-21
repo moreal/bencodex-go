@@ -8,14 +8,14 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var lajideUnmarshalTestData = bencode.Dict{
+var lajideUnmarshalTestData = bencodex.Dict{
 	"announce": "udp://tracker.publicbt.com:80/announce",
-	"announce-list": bencode.List{
-		bencode.List{"udp://tracker.publicbt.com:80/announce"},
-		bencode.List{"udp://tracker.openbittorrent.com:80/announce"},
+	"announce-list": bencodex.List{
+		bencodex.List{"udp://tracker.publicbt.com:80/announce"},
+		bencodex.List{"udp://tracker.openbittorrent.com:80/announce"},
 	},
 	"comment": "Debian CD from cdimage.debian.org",
-	"info": bencode.Dict{
+	"info": bencodex.Dict{
 		"name":         "debian-8.8.0-arm64-netinst.iso",
 		"length":       int64(170917888),
 		"piece length": int64(262144),
@@ -25,7 +25,7 @@ var lajideUnmarshalTestData = bencode.Dict{
 func Benchmark_Lajide_Marshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		buffer, err = bencode.Marshal(bytesInt64TestData)
+		buffer, err = bencodex.Marshal(bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -41,7 +41,7 @@ func Benchmark_Lajide_MarshalTo(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
 		bytesBuffer.Reset()
-		err = bencode.NewEncoder(bytesBuffer).Encode(bytesInt64TestData)
+		err = bencodex.NewEncoder(bytesBuffer).Encode(bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -55,7 +55,7 @@ func Benchmark_Lajide_Unmarshal(b *testing.B) {
 	b.ReportAllocs()
 	var err error
 	for n := 0; n < b.N; n++ {
-		torrent, err = bencode.NewDecoder(bytes.NewReader(unmarshalTestData)).Decode()
+		torrent, err = bencodex.NewDecoder(bytes.NewReader(unmarshalTestData)).Decode()
 		if err != nil {
 			b.Fatal(err)
 		}

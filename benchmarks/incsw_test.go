@@ -10,7 +10,7 @@ import (
 func Benchmark_Incsw_Marshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		buffer, err = bencode.Marshal(bytesInt64TestData)
+		buffer, err = bencodex.Marshal(bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -24,7 +24,7 @@ func Benchmark_Incsw_MarshalTo(b *testing.B) {
 	buffer = make([]byte, 512)
 	b.ResetTimer()
 	for n := 0; n < b.N; n++ {
-		buffer, err = bencode.MarshalTo(buffer, bytesInt64TestData)
+		buffer, err = bencodex.MarshalTo(buffer, bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -36,7 +36,7 @@ func Benchmark_Incsw_MarshalTo(b *testing.B) {
 func Benchmark_Incsw_Unmarshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		torrent, err = bencode.Unmarshal(unmarshalTestData)
+		torrent, err = bencodex.Unmarshal(unmarshalTestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -49,7 +49,7 @@ func Benchmark_Incsw_RealWorld(b *testing.B) {
 	b.ReportAllocs()
 	b.Run("Unmarshal", func(b *testing.B) {
 		for n := 0; n < b.N; n++ {
-			torrent, err = bencode.Unmarshal(realWorldData)
+			torrent, err = bencodex.Unmarshal(realWorldData)
 			if err != nil {
 				b.Fatal(err)
 			}
@@ -58,7 +58,7 @@ func Benchmark_Incsw_RealWorld(b *testing.B) {
 	})
 	b.Run("Marshal", func(b *testing.B) {
 		for n := 0; n < b.N; n++ {
-			buffer, err = bencode.Marshal(torrent)
+			buffer, err = bencodex.Marshal(torrent)
 			if err != nil {
 				b.Fatal(err)
 			}
@@ -66,7 +66,7 @@ func Benchmark_Incsw_RealWorld(b *testing.B) {
 	})
 	b.Run("MarshalTo", func(b *testing.B) {
 		for n := 0; n < b.N; n++ {
-			buffer, err = bencode.MarshalTo(buffer, torrent)
+			buffer, err = bencodex.MarshalTo(buffer, torrent)
 			if err != nil {
 				b.Fatal(err)
 			}

@@ -71,8 +71,8 @@ func TestMarshal(t *testing.T) {
 
 func TestMarshalUnOrderedDict(t *testing.T) {
 	assert := assert.New(t)
-	unorderedEncodedData := []byte(`d7:ttg_tag32:8032a74ec22927a5bd6367537eafd87e7:privatei1e6:source20:[ttys3.bencode.test]e`)
-	expectedReencodedData := []byte(`d7:privatei1e6:source20:[ttys3.bencode.test]7:ttg_tag32:8032a74ec22927a5bd6367537eafd87ee`)
+	unorderedEncodedData := []byte(`d7:ttg_tag32:8032a74ec22927a5bd6367537eafd87e7:privatei1e6:source20:[ttys3.bencodex.test]e`)
+	expectedReencodedData := []byte(`d7:privatei1e6:source20:[ttys3.bencodex.test]7:ttg_tag32:8032a74ec22927a5bd6367537eafd87ee`)
 	data, err := Unmarshal(unorderedEncodedData)
 	assert.NoError(err)
 	//t.Logf("decoded data: %#v", data)

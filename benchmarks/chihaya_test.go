@@ -8,14 +8,14 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var chihayaUnmarshalTestData = bencode.Dict{
+var chihayaUnmarshalTestData = bencodex.Dict{
 	"announce": "udp://tracker.publicbt.com:80/announce",
-	"announce-list": bencode.List{
-		bencode.List{"udp://tracker.publicbt.com:80/announce"},
-		bencode.List{"udp://tracker.openbittorrent.com:80/announce"},
+	"announce-list": bencodex.List{
+		bencodex.List{"udp://tracker.publicbt.com:80/announce"},
+		bencodex.List{"udp://tracker.openbittorrent.com:80/announce"},
 	},
 	"comment": "Debian CD from cdimage.debian.org",
-	"info": bencode.Dict{
+	"info": bencodex.Dict{
 		"name":         "debian-8.8.0-arm64-netinst.iso",
 		"length":       int64(170917888),
 		"piece length": int64(262144),
@@ -25,7 +25,7 @@ var chihayaUnmarshalTestData = bencode.Dict{
 func Benchmark_Chihaya_Marshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		buffer, err = bencode.Marshal(bytesInt64TestData)
+		buffer, err = bencodex.Marshal(bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -41,7 +41,7 @@ func Benchmark_Chihaya_MarshalTo(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
 		bytesBuffer.Reset()
-		err = bencode.NewEncoder(bytesBuffer).Encode(bytesInt64TestData)
+		err = bencodex.NewEncoder(bytesBuffer).Encode(bytesInt64TestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -54,7 +54,7 @@ func Benchmark_Chihaya_MarshalTo(b *testing.B) {
 func Benchmark_Chihaya_Unmarshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		torrent, err = bencode.Unmarshal(unmarshalTestData)
+		torrent, err = bencodex.Unmarshal(unmarshalTestData)
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -68,7 +68,7 @@ func Benchmark_Chihaya_RealWorld(b *testing.B) {
 	b.ReportAllocs()
 	b.Run("Unmarshal", func(b *testing.B) {
 		for n := 0; n < b.N; n++ {
-			torrent, err = bencode.Unmarshal(realWorldData)
+			torrent, err = bencodex.Unmarshal(realWorldData)
 			if err != nil {
 				b.Fatal(err) // ERR: bencode: short read
 			}
@@ -76,7 +76,7 @@ func Benchmark_Chihaya_RealWorld(b *testing.B) {
 	})
 	b.Run("Marshal", func(b *testing.B) {
 		for n := 0; n < b.N; n++ {
-			buffer, err = bencode.Marshal(torrent)
+			buffer, err = bencodex.Marshal(torrent)
 			if err != nil {
 				b.Fatal(err)
 			}
@@ -86,7 +86,7 @@ func Benchmark_Chihaya_RealWorld(b *testing.B) {
 	b.Run("MarshalTo", func(b *testing.B) {
 		for n := 0; n < b.N; n++ {
 			bytesBuffer.Reset()
-			err = bencode.NewEncoder(bytesBuffer).Encode(torrent)
+			err = bencodex.NewEncoder(bytesBuffer).Encode(torrent)
 			if err != nil {
 				b.Fatal(err)
 			}

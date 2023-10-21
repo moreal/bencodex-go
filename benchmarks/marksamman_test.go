@@ -11,7 +11,7 @@ import (
 func Benchmark_Marksamman_Marshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		buffer = bencode.Encode(stringInt64TestData)
+		buffer = bencodex.Encode(stringInt64TestData)
 		if buffer == nil {
 			b.Fatal("got nil")
 		}
@@ -24,7 +24,7 @@ func Benchmark_Marksamman_Marshal(b *testing.B) {
 func Benchmark_Marksamman_Unmarshal(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		torrent, err = bencode.Decode(bytes.NewReader(unmarshalTestData))
+		torrent, err = bencodex.Decode(bytes.NewReader(unmarshalTestData))
 		if err != nil {
 			b.Fatal(err)
 		}
